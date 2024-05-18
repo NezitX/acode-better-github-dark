@@ -1,0 +1,134 @@
+.ace-better-github-dark {
+  .ace_gutter {
+    color: #6e7681;
+  }
+
+  .ace_indent-guide {
+    border-right: 1px solid #2d363f;
+    margin-right: -1px;
+  }
+
+  .ace_indent-guide-active {
+    border-right-color: #47535f;
+  }
+
+  .ace_print-margin {
+    width: 1px;
+    background: #2d363e;
+  }
+
+  color: #ddd;
+
+  .ace_cursor {
+    color: #F8F8F0;
+  }
+
+  .ace_marker-layer {
+    .ace_selection {
+      background: #1f4272;
+      border-radius: 0;
+    }
+
+    .ace_step {
+      background: rgb(198, 219, 174);
+    }
+
+    .ace_bracket {
+      margin: -1px 0 0 -1px;
+      border: 1px solid #F8F8F0;
+    }
+
+    .ace_active-line {
+      background-color: rgba(50, 55, 70, 0.5);
+      box-sizing: border-box;
+    }
+
+    .ace_selected-word {
+      background-color: rgba(125, 81, 64, 0.8);
+    }
+  }
+
+  &.ace_multiselect .ace_selection.ace_start {
+    box-shadow: 0 0 3px black;
+  }
+
+  .ace_invisible {
+    color: #52524d;
+  }
+
+  .ace_keyword.ace_operator,
+  .ace_meta.ace_tag,
+  .ace_comment.ace_doc.ace_tag,
+  .ace_storage,
+  .hljs-keyword,
+  .ace_keyword {
+    color: #ff7b73;
+  }
+
+  .ace_paren {
+    color: #efae31;
+  }
+
+  .ace_constant.ace_character.ace_escape {
+    color: #ff79c5;
+  }
+
+  .ace_constant.ace_other {
+    color: #bd93f8;
+  }
+
+  .hljs-title,
+  .ace_identifier {
+    color: #ebf0f5;
+  }
+
+  .ace_variable,
+  .ace_support.ace_function,
+  .ace_entity.ace_name.ace_function,
+  .ace_class {
+    color: #d2a8fe;
+  }
+
+  .ace_invalid {
+    color: #F8F8F0;
+    background-color: #ff79c6;
+  }
+
+  .ace_invalid.ace_deprecated {
+    color: #F8F8F0;
+    background-color: #bd93f9;
+  }
+
+  .ace_string {
+    color: #a6d6fe;
+  }
+
+  .ace_comment {
+    color: #8b949f;
+  }
+
+  .ace_constant,
+  .ace_support.ace_type,
+  .ace_variable.ace_language {
+    color: #79c1fe;
+  }
+
+  .ace_entity.ace_other.ace_attribute-name {
+    color: #79c1fe;
+  }
+
+  .hljs-params,
+  .ace_variable.ace_parameter {
+    color: #ffa658;
+  }
+
+  .ace_xml-pe.ace_xml,
+  .ace_punctuation.ace_tag {
+    color: #999;
+  }
+
+  .ace_tag-name.ace_tag,
+  .ace_entity.ace_name.ace_tag {
+    color: #7ef788;
+  }
+}
