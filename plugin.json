@@ -5,6 +5,7 @@
   "version":"1.0.0",
   "readme":"readme.md",
   "icon":"./assets/better-githubdark-icon.png",
+  "minVersionCode" : 290,
   "files":[],
   "author": {
     "name":"Nezit X",
