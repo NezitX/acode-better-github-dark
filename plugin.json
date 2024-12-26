@@ -1,7 +1,7 @@
 {
   "id":"x.better.githubdark",
   "name":"Better Github Dark",
-  "main":"dist/main.js",
+  "main":"./main.js",
   "version":"1.0.0",
   "readme":"readme.md",
   "icon":"./assets/better-githubdark-icon.png",

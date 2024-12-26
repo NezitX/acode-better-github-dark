@@ -1,31 +1,122 @@
+@use "sass:map";
+@use "sass:color";
+
+$theme-colors: (
+  // Base colors
+  "background": #0d1117,
+  "foreground": #ddd,
+  "cursor": #f8f8f0,
+
+  // UI elements
+  "gutter": #6e7681,
+  "gutter-active": #89929b,
+  "gutter-selected": #89929b,
+  "indent-guide": #2d363f,
+  "indent-guide-active": #47535f,
+  "print-margin": #2d363e,
+  "selection": #1f4272,
+  "selection-match": rgba(31, 66, 114, 0.5),
+  "active-line": rgba(50, 55, 70, 0.5),
+  "selected-word": rgba(125, 81, 64, 0.8),
+  "invisible": #52524d,
+  "fold": #6e7681,
+
+  // Syntax highlighting
+  "keyword": #ff7b73,
+  "operator": #ff7b73,
+  "storage": #ff7b73,
+  "paren": #efae31,
+  "bracket": #efae31,
+  "escape": #ff79c5,
+  "other-constant": #bd93f8,
+  "identifier": #ebf0f5,
+  "function": #d2a8fe,
+  "class": #d2a8fe,
+  "string": #a6d6fe,
+  "comment": #8b949f,
+  "constant": #79c1fe,
+  "type": #79c1fe,
+  "attribute": #79c1fe,
+  "parameter": #ffa658,
+  "punctuation": #999,
+  "tag-name": #7ef788,
+  "namespace": #ff7b72,
+  "numeric": #79c1fe,
+  "boolean": #79c1fe,
+  "regexp": #a6d6fe,
+  "variable-builtin": #79c1fe,
+
+  // Markdown specific
+  "heading": #ff7b72,
+  "list": #ffa657,
+  "quote": #7ee787,
+  "link": #79c1fe,
+
+  // Special highlighting
+  "diff-add": rgba(46, 160, 67, 0.15),
+  "diff-delete": rgba(248, 81, 73, 0.15),
+  "diff-change": rgba(56, 139, 253, 0.15),
+  // Error states
+  "invalid-bg": #ff79c6,
+  "deprecated-bg": #bd93f9,
+  "error": #f85149,
+  "warning": #ffa657
+);
+
+// Mixins
+@mixin invalid-text {
+  color: map.get($theme-colors, "cursor");
+}
+
 .ace-better-github-dark {
+  background-color: map.get($theme-colors, "background");
+  color: map.get($theme-colors, "foreground");
+
+  // Gutter and guides
   .ace_gutter {
-    color: #6e7681;
+    background: map.get($theme-colors, "background");
+    color: map.get($theme-colors, "gutter");
+
+    &-active {
+      background-color: color.scale(
+        map.get($theme-colors, "background"),
+        $lightness: 5%
+      );
+      color: map.get($theme-colors, "gutter-active");
+    }
+
+    &-selected {
+      color: map.get($theme-colors, "gutter-selected");
+    }
   }
 
   .ace_indent-guide {
-    border-right: 1px solid #2d363f;
+    border-right: 1px solid map.get($theme-colors, "indent-guide");
     margin-right: -1px;
   }
 
   .ace_indent-guide-active {
-    border-right-color: #47535f;
+    border-right-color: map.get($theme-colors, "indent-guide-active");
   }
 
   .ace_print-margin {
     width: 1px;
-    background: #2d363e;
+    background: map.get($theme-colors, "print-margin");
   }
 
-  color: #ddd;
-
+  // Cursor and selection
   .ace_cursor {
-    color: #F8F8F0;
+    color: map.get($theme-colors, "cursor");
+
+    &-thin {
+      color: map.get($theme-colors, "cursor");
+    }
   }
 
+  // Marker layer
   .ace_marker-layer {
     .ace_selection {
-      background: #1f4272;
+      background: map.get($theme-colors, "selection");
       border-radius: 0;
     }
 
@@ -35,100 +126,241 @@
 
     .ace_bracket {
       margin: -1px 0 0 -1px;
-      border: 1px solid #F8F8F0;
+      border: 1px solid map.get($theme-colors, "bracket");
     }
 
     .ace_active-line {
-      background-color: rgba(50, 55, 70, 0.5);
-      box-sizing: border-box;
+      background-color: map.get($theme-colors, "active-line");
     }
 
     .ace_selected-word {
-      background-color: rgba(125, 81, 64, 0.8);
+      background-color: map.get($theme-colors, "selected-word");
+      border: none;
+    }
+
+    .ace_foreign_line {
+      position: absolute;
+      z-index: -1;
+    }
+
+    .ace_finding {
+      background-color: map.get($theme-colors, "selection-match");
+      border-radius: 3px;
     }
   }
 
+  // Multi-select
   &.ace_multiselect .ace_selection.ace_start {
     box-shadow: 0 0 3px black;
   }
 
+  // Invisible characters
   .ace_invisible {
-    color: #52524d;
+    color: map.get($theme-colors, "invisible");
   }
 
-  .ace_keyword.ace_operator,
-  .ace_meta.ace_tag,
-  .ace_comment.ace_doc.ace_tag,
-  .ace_storage,
-  .hljs-keyword,
+  // Fold markers
+  .ace_fold {
+    background-color: map.get($theme-colors, "fold");
+    border-color: map.get($theme-colors, "foreground");
+  }
+
+  // Basic syntax elements
   .ace_keyword {
-    color: #ff7b73;
+    color: map.get($theme-colors, "keyword");
+
+    &.ace_operator {
+      color: map.get($theme-colors, "operator");
+    }
+
+    &.ace_other.ace_unit {
+      color: map.get($theme-colors, "numeric");
+    }
   }
 
-  .ace_paren {
-    color: #efae31;
+  .ace_constant {
+    &.ace_language {
+      color: map.get($theme-colors, "constant");
+    }
+
+    &.ace_numeric {
+      color: map.get($theme-colors, "numeric");
+    }
+
+    &.ace_character {
+      color: map.get($theme-colors, "string");
+
+      &.ace_escape {
+        color: map.get($theme-colors, "escape");
+      }
+    }
+
+    &.ace_other {
+      color: map.get($theme-colors, "other-constant");
+    }
+
+    &.ace_boolean {
+      color: map.get($theme-colors, "boolean");
+    }
   }
 
-  .ace_constant.ace_character.ace_escape {
-    color: #ff79c5;
+  // Identifiers and variables
+  .ace_identifier,
+  .hljs-title {
+    color: map.get($theme-colors, "identifier");
   }
 
-  .ace_constant.ace_other {
-    color: #bd93f8;
+  .ace_variable {
+    color: map.get($theme-colors, "variable-builtin");
+
+    &.ace_parameter {
+      color: map.get($theme-colors, "parameter");
+    }
+
+    &.ace_language {
+      color: map.get($theme-colors, "variable-builtin");
+    }
   }
 
-  .hljs-title,
-  .ace_identifier {
-    color: #ebf0f5;
+  // Functions and support
+  .ace_support {
+    &.ace_function {
+      color: map.get($theme-colors, "function");
+    }
+
+    &.ace_constant {
+      color: map.get($theme-colors, "constant");
+    }
+
+    &.ace_class {
+      color: map.get($theme-colors, "class");
+    }
+
+    &.ace_type {
+      color: map.get($theme-colors, "type");
+    }
   }
 
-  .ace_variable,
-  .ace_support.ace_function,
-  .ace_entity.ace_name.ace_function,
-  .ace_class {
-    color: #d2a8fe;
+  // Storage
+  .ace_storage {
+    color: map.get($theme-colors, "storage");
+
+    &.ace_type {
+      color: map.get($theme-colors, "storage");
+    }
   }
 
-  .ace_invalid {
-    color: #F8F8F0;
-    background-color: #ff79c6;
-  }
-
-  .ace_invalid.ace_deprecated {
-    color: #F8F8F0;
-    background-color: #bd93f9;
-  }
-
+  // Strings and comments
   .ace_string {
-    color: #a6d6fe;
+    color: map.get($theme-colors, "string");
+
+    &.ace_regexp {
+      color: map.get($theme-colors, "regexp");
+    }
   }
 
   .ace_comment {
-    color: #8b949f;
+    color: map.get($theme-colors, "comment");
+
+    &.ace_doc {
+      color: map.get($theme-colors, "comment");
+    }
   }
 
-  .ace_constant,
-  .ace_support.ace_type,
-  .ace_variable.ace_language {
-    color: #79c1fe;
+  // Entities and tags
+  .ace_entity {
+    &.ace_name {
+      &.ace_function {
+        color: map.get($theme-colors, "function");
+      }
+
+      &.ace_tag {
+        color: map.get($theme-colors, "tag-name");
+      }
+    }
+
+    &.ace_other {
+      &.ace_attribute-name {
+        color: map.get($theme-colors, "attribute");
+      }
+    }
   }
 
-  .ace_entity.ace_other.ace_attribute-name {
-    color: #79c1fe;
+  // Invalid states
+  .ace_invalid {
+    @include invalid-text;
+    background-color: map.get($theme-colors, "invalid-bg");
+
+    &.ace_deprecated {
+      @include invalid-text;
+      background-color: map.get($theme-colors, "deprecated-bg");
+    }
   }
 
-  .hljs-params,
-  .ace_variable.ace_parameter {
-    color: #ffa658;
+  // Markdown specific
+  .ace_markup {
+    &.ace_heading {
+      color: map.get($theme-colors, "heading");
+    }
+
+    &.ace_list {
+      color: map.get($theme-colors, "list");
+    }
+
+    &.ace_quote {
+      color: map.get($theme-colors, "quote");
+    }
   }
 
-  .ace_xml-pe.ace_xml,
-  .ace_punctuation.ace_tag {
-    color: #999;
+  // Diff highlighting
+  .ace_diff {
+    &.ace_plus {
+      background-color: map.get($theme-colors, "diff-add");
+    }
+
+    &.ace_minus {
+      background-color: map.get($theme-colors, "diff-delete");
+    }
+
+    &.ace_changed {
+      background-color: map.get($theme-colors, "diff-change");
+    }
   }
 
-  .ace_tag-name.ace_tag,
-  .ace_entity.ace_name.ace_tag {
-    color: #7ef788;
+  // Meta and miscellaneous
+  .ace_meta {
+    &.ace_tag {
+      color: map.get($theme-colors, "keyword");
+    }
+
+    &.ace_selector {
+      color: map.get($theme-colors, "keyword");
+    }
+  }
+
+  .ace_namespace {
+    color: map.get($theme-colors, "namespace");
+  }
+
+  // Parentheses and punctuation
+  .ace_paren {
+    color: map.get($theme-colors, "paren");
+  }
+
+  .ace_punctuation {
+    &.ace_tag {
+      color: map.get($theme-colors, "punctuation");
+    }
+  }
+
+  // Error and warning indicators
+  .ace_error {
+    background-color: transparent;
+    color: map.get($theme-colors, "error");
+  }
+
+  .ace_warning {
+    background-color: transparent;
+    color: map.get($theme-colors, "warning");
   }
 }

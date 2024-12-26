@@ -1,9 +1,9 @@
-![image](/assets/better-githubdark-logo.png)
+![image](https://raw.githubusercontent.com/NezitX/acode-better-github-dark/refs/heads/main/assets/better-githubdark-logo.png)
 
-Better GitHub Dark is a [Acode Plugin](https://acode.app/plugin-docs/) theme for more beautiful colors, based on [Ace](https://ace.c9.io/) GitHub Dark theme.
+Better GitHub Dark is a [Acode Plugin](https://acode.app/plugin-docs/) theme based on [Ace](https://ace.c9.io/) GitHub Dark theme.
 
-## Example
-![image](/assets/example.png)
+## Preview
+![image](https://raw.githubusercontent.com/NezitX/acode-better-github-dark/refs/heads/main/assets/example.png)
 
 ## Note
 this project is fork from [acode editorTheme template](https://github.com/legendSabbir/acode-editorTheme-template/) thanks for the template.
