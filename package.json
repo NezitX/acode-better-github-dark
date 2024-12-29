@@ -1,7 +1,7 @@
 {
   "name": "better-github-dark",
-  "version": "1.0.0",
-  "description": "Better GitHub Dark is a Acode plugin Editor theme for more beautiful colors",
+  "version": "1.1.0",
+  "description": "Better GitHub Dark is a Acode plugin Editor theme based on GitHub Dark theme",
   "main": "dist/main.js",
   "repository": "https://github.com/NezitX/acode-better-github-dark.git",
   "author": "NezitX",
